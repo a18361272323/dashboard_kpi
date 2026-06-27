@@ -4,7 +4,7 @@ module.exports = defineConfig({
   lintOnSave: false,
   runtimeCompiler: true,
   parallel: false,
-  publicPath: 'https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@latest/dist/',
+  publicPath: 'https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@898ace2/dist/',
   configureWebpack: {
     optimization: { splitChunks: false, concatenateModules: false },
     output: { filename: 'js/app.js', chunkFilename: 'js/[name].[contenthash:8].js' }
