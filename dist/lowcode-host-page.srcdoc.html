@@ -12,6 +12,7 @@
 (function(){
   var M='https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@b381db7/dist/microfrontend-assets.direct.json';
   var B='https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@b381db7/dist/';
+  var manifest=null;
   function L(u,t){
     return new Promise(function(r,j){
       if(t){
@@ -22,11 +23,10 @@
     });
   }
   fetch(M,{cache:'no-cache'}).then(function(r){return r.json()}).then(function(m){
-    var css=(m.css||[]).map(function(u){return L(B+u,0)});
-    return Promise.all(css);
+    manifest=m;
+    return Promise.all((m.css||[]).map(function(u){return L(B+u,0)}));
   }).then(function(){
-    var js=(m.js||[]).map(function(u){return L(B+u,1)});
-    return Promise.all(js);
+    return Promise.all((manifest.js||[]).map(function(u){return L(B+u,1)}));
   }).catch(function(e){
     document.getElementById('app').textContent='Load failed: '+e.message;
   });
