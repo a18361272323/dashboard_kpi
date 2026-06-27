@@ -1,38 +1,69 @@
-// 低开宿主页 onMount — 粘贴到 页面渲染完成 → 执行 JS
-// 生成时间: 2026-06-27
-// 资源: jsDelivr CDN, commit 2ee14f1c
+var mountId = "lowcode-microfrontend-host";
+var frameId = "lowcode-microfrontend-frame";
+var srcdocBase64 = "PCFkb2N0eXBlIGh0bWw+CjxodG1sIGxhbmc9InpoLUNOIj4KICA8aGVhZD4KICAgIDxtZXRhIGNoYXJzZXQ9IlVURi04IiAvPgogICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiIC8+CiAgICA8dGl0bGU+TG93Y29kZSBNaWNyb2Zyb250ZW5kPC90aXRsZT4KICA8L2hlYWQ+CiAgPGJvZHk+CiAgICA8ZGl2IGlkPSJhcHAiPjwvZGl2PgogICAgPHNjcmlwdCB0eXBlPSJtb2R1bGUiPgogICAgICBjb25zdCBhc3NldE1hbmlmZXN0VXJsID0gImh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9naC9hMTgzNjEyNzIzMjMvZGFzaGJvYXJkX2twaUAyZWUxNGYxL2Rpc3QvbWljcm9mcm9udGVuZC1hc3NldHMuZGlyZWN0Lmpzb24iOwogICAgICBjb25zdCBhcHBSb290ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImFwcCIpOwoKICAgICAgZnVuY3Rpb24gcmVzb2x2ZUFzc2V0VXJsKHZhbHVlKSB7CiAgICAgICAgcmV0dXJuIG5ldyBVUkwodmFsdWUsIGFzc2V0TWFuaWZlc3RVcmwpLmhyZWY7CiAgICAgIH0KCiAgICAgIGZ1bmN0aW9uIGFwcGVuZFN0eWxlc2hlZXQodXJsKSB7CiAgICAgICAgY29uc3QgbGluayA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoImxpbmsiKTsKICAgICAgICBsaW5rLnJlbCA9ICJzdHlsZXNoZWV0IjsKICAgICAgICBsaW5rLmNyb3NzT3JpZ2luID0gImFub255bW91cyI7CiAgICAgICAgbGluay5ocmVmID0gcmVzb2x2ZUFzc2V0VXJsKHVybCk7CiAgICAgICAgZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChsaW5rKTsKICAgICAgfQoKICAgICAgZnVuY3Rpb24gYXBwZW5kTW9kdWxlU2NyaXB0KHVybCkgewogICAgICAgIGNvbnN0IHNjcmlwdCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpOwogICAgICAgIHNjcmlwdC50eXBlID0gIm1vZHVsZSI7CiAgICAgICAgc2NyaXB0LmNyb3NzT3JpZ2luID0gImFub255bW91cyI7CiAgICAgICAgc2NyaXB0LnNyYyA9IHJlc29sdmVBc3NldFVybCh1cmwpOwogICAgICAgIGRvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQoc2NyaXB0KTsKICAgICAgfQoKICAgICAgZnVuY3Rpb24gcmVhZEFzc2V0TGlzdChtYW5pZmVzdCwga2V5KSB7CiAgICAgICAgaWYgKEFycmF5LmlzQXJyYXkobWFuaWZlc3Rba2V5XSkpIHJldHVybiBtYW5pZmVzdFtrZXldOwogICAgICAgIGlmIChtYW5pZmVzdC5hc3NldHMgJiYgQXJyYXkuaXNBcnJheShtYW5pZmVzdC5hc3NldHNba2V5XSkpIHJldHVybiBtYW5pZmVzdC5hc3NldHNba2V5XTsKICAgICAgICByZXR1cm4gW107CiAgICAgIH0KCiAgICAgIGZldGNoKGFzc2V0TWFuaWZlc3RVcmwsIHsgY2FjaGU6ICJuby1jYWNoZSIgfSkKICAgICAgICAudGhlbigocmVzcG9uc2UpID0+IHsKICAgICAgICAgIGlmICghcmVzcG9uc2Uub2spIHRocm93IG5ldyBFcnJvcigiYXNzZXQgbWFuaWZlc3QgIiArIHJlc3BvbnNlLnN0YXR1cyk7CiAgICAgICAgICByZXR1cm4gcmVzcG9uc2UuanNvbigpOwogICAgICAgIH0pCiAgICAgICAgLnRoZW4oKG1hbmlmZXN0KSA9PiB7CiAgICAgICAgICByZWFkQXNzZXRMaXN0KG1hbmlmZXN0LCAiY3NzIikuZm9yRWFjaChhcHBlbmRTdHlsZXNoZWV0KTsKICAgICAgICAgIHJlYWRBc3NldExpc3QobWFuaWZlc3QsICJqcyIpLmZvckVhY2goYXBwZW5kTW9kdWxlU2NyaXB0KTsKICAgICAgICB9KQogICAgICAgIC5jYXRjaCgoZXJyb3IpID0+IHsKICAgICAgICAgIGFwcFJvb3QudGV4dENvbnRlbnQgPSAiTWljcm9mcm9udGVuZCBhc3NldCBtYW5pZmVzdCBsb2FkIGZhaWxlZDogIiArIGVycm9yLm1lc3NhZ2U7CiAgICAgICAgICBhcHBSb290LnN0eWxlLnBhZGRpbmcgPSAiMTZweCI7CiAgICAgICAgICBhcHBSb290LnN0eWxlLmZvbnRGYW1pbHkgPSAic3lzdGVtLXVpLCBzYW5zLXNlcmlmIjsKICAgICAgICAgIGFwcFJvb3Quc3R5bGUuY29sb3IgPSAiI2I0MjMxOCI7CiAgICAgICAgfSk7CiAgICA8L3NjcmlwdD4KICA8L2JvZHk+CjwvaHRtbD4K";
 
-(function() {
-  var runtimeWindow = env.getCurrentWindow ? env.getCurrentWindow() : window;
-  var doc = runtimeWindow.document;
-  
-  var container = doc.getElementsByClassName('xcode-pc-page')[0] || doc.body;
-  container.style.width = '100%';
-  container.style.height = '100%';
-  container.style.minHeight = '100vh';
-  container.style.padding = '0';
-  container.style.margin = '0';
-  container.style.overflow = 'hidden';
-  
-  var workbench = doc.getElementsByClassName('xcode-layout-content procode-render-workbench-content')[0];
-  if (workbench) workbench.style.padding = '0';
+function decodeBase64Utf8(base64) {
+  var binary = atob(base64);
+  var bytes = Uint8Array.from(binary, function (char) {
+    return char.charCodeAt(0);
+  });
+  if (typeof TextDecoder !== "undefined") {
+    return new TextDecoder("utf-8").decode(bytes);
+  }
+  var escaped = "";
+  for (var i = 0; i < bytes.length; i += 1) {
+    escaped += "%" + ("00" + bytes[i].toString(16)).slice(-2);
+  }
+  return decodeURIComponent(escaped);
+}
 
-  var existing = doc.getElementById('dashboard-app');
-  if (existing) existing.remove();
+var runtimeWindow = (typeof env !== "undefined" && env && typeof env.getCurrentWindow === "function")
+  ? env.getCurrentWindow()
+  : window;
+var doc = runtimeWindow.document;
 
-  var srcdocBase64 = "PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InpoLUNOIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPTE5MjAsIGluaXRpYWwtc2NhbGU9MS4wIj4KPHRpdGxlPuaVsOaNruWkp+WxjzwvdGl0bGU+CjxzdHlsZT4KICAqIHsgbWFyZ2luOiAwOyBwYWRkaW5nOiAwOyBib3gtc2l6aW5nOiBib3JkZXItYm94OyB9CiAgaHRtbCwgYm9keSwgI2FwcCB7IHdpZHRoOiAxMDAlOyBoZWlnaHQ6IDEwMCU7IG92ZXJmbG93OiBoaWRkZW47IH0KPC9zdHlsZT4KPC9oZWFkPgo8Ym9keT4KPGRpdiBpZD0iYXBwIj48L2Rpdj4KPHNjcmlwdD4KKGZ1bmN0aW9uKCkgewogIHZhciBNQU5JRkVTVF9VUkwgPSAnaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2ExODM2MTI3MjMyMy9kYXNoYm9hcmRfa3BpQDJlZTE0ZjEvZGlzdC9taWNyb2Zyb250ZW5kLWFzc2V0cy5qc29uJzsKICB2YXIgQkFTRSA9ICdodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvZ2gvYTE4MzYxMjcyMzIzL2Rhc2hib2FyZF9rcGlAMmVlMTRmMS9kaXN0Lyc7CiAgCiAgZnVuY3Rpb24gbG9hZENTUyh1cmwsIGNiKSB7IHZhciBsID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnbGluaycpOyBsLnJlbCA9ICdzdHlsZXNoZWV0JzsgbC5ocmVmID0gdXJsOyBsLm9ubG9hZCA9IGNiOyBkb2N1bWVudC5oZWFkLmFwcGVuZENoaWxkKGwpOyB9CiAgZnVuY3Rpb24gbG9hZEpTKHVybCwgY2IpIHsgdmFyIHMgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdzY3JpcHQnKTsgcy5zcmMgPSB1cmw7IHMub25sb2FkID0gY2I7IGRvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQocyk7IH0KICBmdW5jdGlvbiBsb2FkQWxsKGxpc3QsIGxvYWRlcikgewogICAgcmV0dXJuIG5ldyBQcm9taXNlKGZ1bmN0aW9uKHJlc29sdmUpIHsKICAgICAgdmFyIGkgPSAwOwogICAgICBmdW5jdGlvbiBuZXh0KCkgeyBpZiAoaSA8IGxpc3QubGVuZ3RoKSB7IGxvYWRlcihCQVNFICsgbGlzdFtpXSwgbmV4dCk7IGkrKzsgfSBlbHNlIHJlc29sdmUoKTsgfQogICAgICBuZXh0KCk7CiAgICB9KTsKICB9CgogIGZldGNoKE1BTklGRVNUX1VSTCkudGhlbihmdW5jdGlvbihyKSB7IHJldHVybiByLmpzb24oKTsgfSkudGhlbihmdW5jdGlvbihtKSB7CiAgICBsb2FkQWxsKG0uY3NzLCBsb2FkQ1NTKS50aGVuKGZ1bmN0aW9uKCkgewogICAgICBsb2FkQWxsKG0uanMsIGxvYWRKUyk7CiAgICB9KTsKICB9KTsKfSkoKTsKPC9zY3JpcHQ+CjwvYm9keT4KPC9odG1sPgo=";
-  var decoded = new TextDecoder('utf-8').decode(
-    Uint8Array.from(atob(srcdocBase64), function(c) { return c.charCodeAt(0); })
-  );
+var container = doc.getElementsByClassName("xcode-pc-page")[0] || doc.body;
+var workbench = doc.getElementsByClassName("xcode-layout-content procode-render-workbench-content")[0];
 
-  var iframe = doc.createElement('iframe');
-  iframe.id = 'dashboard-app';
-  iframe.style.width = '100%';
-  iframe.style.height = '100%';
-  iframe.style.border = 'none';
-  iframe.style.display = 'block';
-  iframe.srcdoc = decoded;
-  
-  container.innerHTML = '';
-  container.appendChild(iframe);
-})();
+container.style.width = "100%";
+container.style.height = "100%";
+container.style.minHeight = "100vh";
+container.style.padding = "0";
+container.style.margin = "0";
+container.style.overflow = "hidden";
+
+if (workbench) {
+  workbench.style.padding = "0";
+}
+
+var host = doc.getElementById(mountId);
+if (!host) {
+  host = doc.createElement("div");
+  host.id = mountId;
+  host.style.width = "100%";
+  host.style.height = "100%";
+  host.style.minHeight = "100vh";
+  host.style.overflow = "hidden";
+  host.style.position = "relative";
+  container.appendChild(host);
+}
+
+var oldFrame = doc.getElementById(frameId);
+if (oldFrame && oldFrame.parentNode) {
+  oldFrame.parentNode.removeChild(oldFrame);
+}
+
+var iframe = doc.createElement("iframe");
+iframe.id = frameId;
+iframe.title = "lowcode microfrontend";
+iframe.frameBorder = "0";
+iframe.setAttribute("data-lowcode-microfrontend", "srcdoc");
+iframe.style.width = "100%";
+iframe.style.height = "100%";
+iframe.style.border = "0";
+iframe.style.display = "block";
+iframe.srcdoc = decodeBase64Utf8(srcdocBase64);
+
+host.appendChild(iframe);
+
+return { mounted: true, type: "iframe-srcdoc-microfrontend", target: frameId };
