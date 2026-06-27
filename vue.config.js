@@ -4,10 +4,10 @@ module.exports = defineConfig({
   lintOnSave: false,
   runtimeCompiler: true,
   parallel: false,
-  publicPath: 'https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@562720da/dist/',
+  publicPath: 'https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@488f846/dist/',
   configureWebpack: {
     optimization: { splitChunks: false, concatenateModules: false },
-    output: { filename: 'js/app.js', chunkFilename: 'js/[name].[contenthash:8].js' }
+    output: { filename: 'js/app.js', chunkFilename: 'js/[name].js' }
   },
-  css: { extract: { filename: 'css/app.css' } }
+  css: { extract: { filename: 'css/[name].css', chunkFilename: 'css/[name].css' } }
 })
