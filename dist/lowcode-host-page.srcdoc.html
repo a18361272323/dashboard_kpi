@@ -10,13 +10,13 @@
 <div id="app"></div>
 <script>
 (function(){
-  var M='https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@aa7e840/dist/microfrontend-assets.direct.json';
-  var B='https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@aa7e840/dist/';
+  var M='https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@d9fa3eb/dist/microfrontend-assets.direct.json';
+  var B='https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@d9fa3eb/dist/';
   function L(u,t){
     return new Promise(function(r,j){
       if(t){
         var s=document.createElement('script');
-        s.src=u;s.onload=r;s.onerror=function(){j(new Error('script '+u))};
+        s.src=u;s.onload=r;s.onerror=function(){j(new Error('js '+u))};
         document.body.appendChild(s);
       }else{
         var l=document.createElement('link');
@@ -26,10 +26,10 @@
     });
   }
   fetch(M,{cache:'no-cache'}).then(function(r){return r.json()}).then(function(m){
-    var css=(Array.isArray(m.css)?m.css:[]).map(function(u){return L(B+u,0)});
+    var css=(m.css||[]).map(function(u){return L(B+u,0)});
     return Promise.all(css);
   }).then(function(){
-    var js=(Array.isArray(m.js)?m.js:[]).map(function(u){return L(B+u,1)});
+    var js=(m.js||[]).map(function(u){return L(B+u,1)});
     return Promise.all(js);
   }).catch(function(e){
     document.getElementById('app').textContent='Load failed: '+e.message;
