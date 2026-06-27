@@ -1,14 +1,5 @@
 {
-  "buildId": "2026-06-27T12-33-37Z",
-  "commit": "2ee14f1c",
-  "baseUrl": "https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@2ee14f1/dist",
-  "css": [
-    "css/288.c3163893.css",
-    "css/app.65b75b94.css"
-  ],
-  "js": [
-    "js/chunk-vendors.e597df09.js",
-    "js/288.cff830e2.js",
-    "js/app.e5135b3c.js"
-  ]
+  "version": 1,
+  "mode": "assetManifestUrl",
+  "assetManifestUrl": "https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@2ee14f1/dist/microfrontend-assets.json?mode=direct"
 }
