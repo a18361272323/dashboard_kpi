@@ -6,7 +6,7 @@ module.exports = defineConfig({
   lintOnSave: false,
   runtimeCompiler: true,
   parallel: false,
-  publicPath: 'https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@688ef81/dist/',
+  publicPath: 'https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@f5d92e7/dist/',
   configureWebpack: {
     plugins: [
       new webpack.DefinePlugin({
