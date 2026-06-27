@@ -1,36 +1,53 @@
-// Low-code Platform API SDK for Dashboard
-// All URLs are absolute to work inside srcdoc iframes
+// Low-code Platform API SDK — per skill references/vue-iframe-lowcode-backend.md
+// Endpoint: POST /api/run/odexftopenapiv2appmodelmethodrun?appTag=&modelKey=&methodKey=
+// Headers: Content-Type + Accept + xcode-appsource:procode + credentials:include
 
-const ORIGIN = 'https://xft-demo.cmburl.cn';
+const BASE = 'https://xft-demo.cmburl.cn/xcodegw';
 const APP_KEY = 'eee42da8-4947-457b-a49d-04291079cfea';
-const MODEL_KEY = 'MOUJn1fQ9M';
 const APP_TAG = 'dev';
-const BASE = `${ORIGIN}/xcodegw/app/${APP_KEY}/tag/${APP_TAG}/model/${MODEL_KEY}/method`;
+const MODEL_KEY = 'MOIucc0YGX';
 
-const METHODS = {
-  list: 'FUF08ktjo2',    // 列表查询
-  create: 'FULytBVVOo'   // 新增
-};
+function isSuccess(res: any) {
+  return !!res && (res.returnCode === 'SUC0000' || res.code === 'SUC0000' || res.code === 0 || res.code === 200);
+}
 
-interface LowcodeResponse<T = any> { returnCode: string; errorMsg?: string; body: T; }
+function getBody(res: any) { return res && (res.body || res.data || res); }
 
-async function lowcodePost<T = any>(path: string, body: Record<string, any> = {}): Promise<T> {
-  const res = await fetch(path, {
-    method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    credentials: 'include', body: JSON.stringify(body)
+async function runModelMethod(methodKey: string, body: Record<string, any> = {}) {
+  const q = new URLSearchParams({ appTag: APP_TAG, modelKey: MODEL_KEY, methodKey });
+  const resp = await fetch(`${BASE}/api/run/odexftopenapiv2appmodelmethodrun?${q}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json, text/plain, */*', 'xcode-appsource': 'procode' },
+    credentials: 'include',
+    body: JSON.stringify(body)
   });
-  const json: LowcodeResponse<T> = await res.json().catch(() => ({} as any));
-  if (json.returnCode && json.returnCode !== 'SUC0000') throw new Error(json.errorMsg || json.returnCode);
-  return json.body;
+  const json = await resp.json().catch(() => ({}));
+  if (!resp.ok || !isSuccess(json)) throw new Error(json.errorMsg || json.message || `HTTP ${resp.status}`);
+  return getBody(json);
 }
 
-export interface DashboardRecord {
-  chart_id: string; item_name: string; item_value: number; item_json: any; id?: number;
+// Convenience wrappers — method keys to be verified in low-code editor Model > Methods tab
+export async function fetchList(params: Record<string, any> = {}) {
+  return runModelMethod('list', { current: 1, pageSize: 500, ...params });
 }
+
+export async function fetchCreate(record: Record<string, any>) {
+  return runModelMethod('create', record);
+}
+
+export async function fetchUpdate(record: Record<string, any>) {
+  return runModelMethod('update', record);
+}
+
+export async function fetchDelete(id: string | number) {
+  return runModelMethod('delete', { id });
+}
+
+export interface DashboardRecord { chart_id: string; item_name: string; item_value: number; item_json: any; chart_type?: string; sort_order?: number; data_date?: string; id?: number; }
 
 export async function fetchChartData(chartId: string): Promise<DashboardRecord[]> {
-  const result = await lowcodePost<{ list: DashboardRecord[]; total: number }>(`${BASE}/${METHODS.list}/run`, { chart_id: chartId, current: 1, pageSize: 500 });
-  return result.list || [];
+  const result = await fetchList({ chart_id: chartId }) as { list?: DashboardRecord[]; total?: number };
+  return result?.list || [];
 }
 
-export { METHODS, BASE, ORIGIN, APP_KEY, APP_TAG, MODEL_KEY, lowcodePost };
+export { runModelMethod, BASE, APP_KEY, APP_TAG, MODEL_KEY, isSuccess, getBody };
