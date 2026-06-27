@@ -2,5 +2,5 @@
   "title": "数据大屏",
   "mountId": "dashboard-app-host",
   "frameId": "dashboard-app-frame",
-  "assetManifestUrl": "https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@cf22502/dist/microfrontend-assets.direct.json"
+  "assetManifestUrl": "https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@v1.0.1/dist/microfrontend-assets.direct.json"
 }
