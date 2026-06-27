@@ -18,13 +18,12 @@
 </template>
 
 <script lang='ts'>
-import { defineComponent } from 'vue'
 import Chart from './chart/index'
-export default defineComponent({
+export default {
   components: {
     Chart
   }
-})
+}
 </script>
 
 <style lang="scss" scoped>

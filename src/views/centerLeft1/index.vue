@@ -35,9 +35,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted,  reactive } from 'vue'
+import { onMounted, onUnmounted,  reactive } from 'vue'
 import Chart from './chart/index'
-export default defineComponent({
+export default {
   components: {
     Chart
   },
@@ -108,7 +108,7 @@ export default defineComponent({
 
     return { numberData, iconFont}
   }
-})
+}
 </script>
 
 <style lang="scss" scoped>

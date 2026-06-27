@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import { defineComponent, reactive } from 'vue'
-export default defineComponent({
+import { reactive } from 'vue'
+export default {
   setup() {
     const config = reactive({
       header: ['组件', '分支', '覆盖率'],
@@ -45,7 +45,7 @@ export default defineComponent({
     })
     return { config }
   }
-})
+}
 </script>
 
 <style lang="scss" scoped>

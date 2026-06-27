@@ -1,4 +1,4 @@
-import { defineComponent, onMounted, ref, watch, onBeforeUnmount, reactive } from 'vue'
+import { onMounted, ref, watch, onBeforeUnmount, reactive } from 'vue'
 import '@/common/echart/map/fujian.js'
 import theme from '@/common/echart/style/theme.js' // 引入默认主题
 import * as echarts from 'echarts'
@@ -29,7 +29,7 @@ const PropsType = {
   }
 } as const
 
-export default defineComponent({
+export default {
   name: 'Echarts',
   props: PropsType,
   setup(props, { expose }) {
@@ -91,4 +91,4 @@ export default defineComponent({
       />
     }
   }
-})
+}

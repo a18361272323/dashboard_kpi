@@ -44,10 +44,10 @@
 </template>
 
 <script>
-import { defineComponent, reactive, onMounted } from 'vue'
+import { reactive, onMounted } from 'vue'
 import Chart from '../center/chart/draw'
 
-export default defineComponent({
+export default {
   components: {
     Chart
   },
@@ -195,7 +195,7 @@ export default defineComponent({
       rate
     }
   }
-})
+}
 </script>
 
 <style lang="scss" scoped>

@@ -94,7 +94,6 @@
 
 <script lang="ts">
 import {
-  defineComponent,
   ref,
   reactive,
   onMounted,
@@ -112,7 +111,7 @@ import CenterRight2 from '../centerRight2/index.vue'
 import BottomLeft from '../bottomLeft/index.vue'
 import BottomRight from '../bottomRight/index.vue'
 
-export default defineComponent({
+export default {
   components: {
     CenterLeft1,
     CenterLeft2,
@@ -178,7 +177,7 @@ export default defineComponent({
       moduleInfo
     }
   }
-})
+}
 </script>
 
 <style lang="scss" scoped>

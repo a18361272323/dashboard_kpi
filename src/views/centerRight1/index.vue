@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import { defineComponent, reactive } from 'vue'
+import { reactive } from 'vue'
 import Chart from './chart/index.tsx'
 
-export default defineComponent({
+export default {
   components: {
     Chart
   },
@@ -51,7 +51,7 @@ export default defineComponent({
 
     return { config }
   }
-})
+}
 </script>
 
 <style lang="scss" scoped>
