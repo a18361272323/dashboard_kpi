@@ -1,11 +1,11 @@
 {
   "css": [
-    "https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@93f7909/dist/css/288.c3163893.css",
-    "https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@93f7909/dist/css/app.65b75b94.css"
+    "https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@aa7e840/dist/css/288.c3163893.css",
+    "https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@aa7e840/dist/css/app.65b75b94.css"
   ],
   "js": [
-    "https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@93f7909/dist/js/chunk-vendors.f821a590.js",
-    "https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@93f7909/dist/js/288.cff830e2.js",
-    "https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@93f7909/dist/js/app.e5135b3c.js"
+    "https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@aa7e840/dist/js/chunk-vendors.f821a590.js",
+    "https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@aa7e840/dist/js/288.cff830e2.js",
+    "https://cdn.jsdelivr.net/gh/a18361272323/dashboard_kpi@aa7e840/dist/js/app.e5135b3c.js"
   ]
 }
