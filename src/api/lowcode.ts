@@ -1,16 +1,26 @@
-// Low-code Platform API SDK — per skill references/vue-iframe-lowcode-backend.md
-// Endpoint: POST /api/run/odexftopenapiv2appmodelmethodrun?appTag=&modelKey=&methodKey=
-// Headers: Content-Type + Accept + xcode-appsource:procode + credentials:include
+// Low-code API SDK — per skill vue-iframe-lowcode-backend.md
+// Model: MOUJn1fQ9M (dashboard_prod / 大屏数据)
 
 const BASE = 'https://xft-demo.cmburl.cn/xcodegw';
 const APP_KEY = 'eee42da8-4947-457b-a49d-04291079cfea';
 const APP_TAG = 'dev';
-const MODEL_KEY = 'MOIucc0YGX';
+const MODEL_KEY = 'MOUJn1fQ9M';
+
+// Method keys from model readback 2026-06-27
+const M = {
+  list:    'FUF08ktjo2', // 列表查询 BATCH_FIND
+  create:  'FULytBVVOo', // 新增 ADD
+  update:  'FUyV59iHd2', // 编辑 UPDATE
+  detail:  'FU019yKTqL', // 查看详情 FIND
+  remove:  'FUh2cNNnKB', // 删除 REMOVE
+  batchRm: 'FUxPRdov7A', // 批量删除 BATCH_REMOVE
+  export_: 'FUrb1sq5OK', // 批量导出 EXPORT
+  import_: 'FUsmqDXjlC', // 批量导入 IMPORT
+};
 
 function isSuccess(res: any) {
   return !!res && (res.returnCode === 'SUC0000' || res.code === 'SUC0000' || res.code === 0 || res.code === 200);
 }
-
 function getBody(res: any) { return res && (res.body || res.data || res); }
 
 async function runModelMethod(methodKey: string, body: Record<string, any> = {}) {
@@ -26,28 +36,17 @@ async function runModelMethod(methodKey: string, body: Record<string, any> = {})
   return getBody(json);
 }
 
-// Convenience wrappers — method keys to be verified in low-code editor Model > Methods tab
-export async function fetchList(params: Record<string, any> = {}) {
-  return runModelMethod('list', { current: 1, pageSize: 500, ...params });
+export interface DashboardRecord {
+  chart_id: string; item_name: string; item_value: number; item_json: any; id?: number;
 }
-
-export async function fetchCreate(record: Record<string, any>) {
-  return runModelMethod('create', record);
-}
-
-export async function fetchUpdate(record: Record<string, any>) {
-  return runModelMethod('update', record);
-}
-
-export async function fetchDelete(id: string | number) {
-  return runModelMethod('delete', { id });
-}
-
-export interface DashboardRecord { chart_id: string; item_name: string; item_value: number; item_json: any; chart_type?: string; sort_order?: number; data_date?: string; id?: number; }
 
 export async function fetchChartData(chartId: string): Promise<DashboardRecord[]> {
-  const result = await fetchList({ chart_id: chartId }) as { list?: DashboardRecord[]; total?: number };
+  const result = await runModelMethod(M.list, { chart_id: chartId, current: 1, pageSize: 500 }) as { list?: DashboardRecord[]; total?: number };
   return result?.list || [];
 }
 
-export { runModelMethod, BASE, APP_KEY, APP_TAG, MODEL_KEY, isSuccess, getBody };
+export async function createRecord(record: DashboardRecord) {
+  return runModelMethod(M.create, record);
+}
+
+export { runModelMethod, M, BASE, APP_KEY, APP_TAG, MODEL_KEY, isSuccess, getBody };
