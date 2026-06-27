@@ -1,0 +1,235 @@
+/* 科技蓝大屏主题变量 */
+:root {
+  --bg-primary: #0a1628;
+  --bg-secondary: rgba(6, 30, 65, 0.8);
+  --bg-panel: rgba(0, 40, 100, 0.25);
+  --border-color: rgba(0, 180, 255, 0.3);
+  --border-glow: rgba(0, 180, 255, 0.6);
+  --text-primary: #e0e8f0;
+  --text-secondary: rgba(160, 200, 240, 0.8);
+  --accent-blue: #00d4ff;
+  --accent-green: #00ff88;
+  --accent-orange: #ff6600;
+  --accent-red: #ff3366;
+  --accent-purple: #9966ff;
+  --font-display: 'Orbitron', 'Microsoft YaHei', sans-serif;
+  --font-body: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #app {
+  width: 100%; height: 100%;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow: hidden;
+}
+
+.dashboard {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  padding: 16px;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(0, 100, 200, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(0, 200, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(0, 50, 150, 0.05) 0%, transparent 50%);
+  position: relative;
+}
+
+/* 顶部装饰线 */
+.dashboard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 5%; right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-blue), var(--accent-green), transparent);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+/* Header */
+.dashboard-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 20px 16px;
+  position: relative;
+}
+.dashboard-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+}
+.dashboard-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(135deg, #00d4ff, #00ff88);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+  letter-spacing: 4px;
+}
+.dashboard-time {
+  font-size: 14px;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+/* KPI 卡片区域 */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.kpi-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.kpi-card:hover {
+  border-color: var(--border-glow);
+  box-shadow: 0 0 20px rgba(0, 180, 255, 0.2);
+  transform: translateY(-2px);
+}
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+}
+.kpi-card[data-color='cyan']::before { background: var(--accent-blue); }
+.kpi-card[data-color='green']::before { background: var(--accent-green); }
+.kpi-card[data-color='orange']::before { background: var(--accent-orange); }
+.kpi-card[data-color='red']::before { background: var(--accent-red); }
+
+.kpi-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 8px;
+}
+.kpi-label {
+  font-size: 13px; color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+.kpi-icon { font-size: 24px; }
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 700;
+  margin-bottom: 4px;
+}
+.kpi-footer {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px;
+}
+.kpi-trend-up { color: var(--accent-green); }
+.kpi-trend-down { color: var(--accent-red); }
+.kpi-unit { color: var(--text-secondary); font-size: 14px; margin-left: 4px; }
+
+/* 图表网格 */
+.charts-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  padding: 8px 0;
+  min-height: 0;
+}
+
+.chart-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.chart-panel:hover {
+  border-color: var(--border-glow);
+  box-shadow: 0 0 15px rgba(0, 180, 255, 0.15);
+}
+
+.chart-panel-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent-blue);
+}
+
+.chart-panel.full-width {
+  grid-column: 1 / -1;
+}
+
+.chart-container {
+  width: 100%;
+  height: calc(100% - 28px);
+}
+
+/* 事件滚动条 */
+.event-ticker {
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+}
+.event-ticker-track {
+  animation: scroll-up 20s linear infinite;
+}
+.event-ticker:hover .event-ticker-track {
+  animation-play-state: paused;
+}
+@keyframes scroll-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+.event-item {
+  display: flex; align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(0, 180, 255, 0.1);
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.event-level-info { color: var(--accent-blue); }
+.event-level-warning { color: var(--accent-orange); }
+.event-level-error { color: var(--accent-red); }
+.event-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.event-level-info .event-dot { background: var(--accent-blue); }
+.event-level-warning .event-dot { background: var(--accent-orange); }
+.event-level-error .event-dot { background: var(--accent-red); }
+.event-time { color: var(--text-secondary); font-size: 11px; flex-shrink: 0; }
+.event-title { font-weight: 500; flex-shrink: 0; }
+.event-content { color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; }
+
+/* 地图容器 */
+.map-container {
+  width: 100%; height: 100%;
+}
+
+/* 响应式 */
+@media (max-width: 1200px) {
+  .charts-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .charts-grid { grid-template-columns: 1fr; }
+  .kpi-row { grid-template-columns: 1fr; }
+}
